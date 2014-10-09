@@ -1,29 +1,26 @@
 <?php
 /**
-Aihrus Framework
-Copyright (C) 2014  Michael Cannon
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along
-with this program; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ * Aihrus Framework
+ * Copyright (C) 2014  Michael Cannon
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
+
 
 /**
  * Aihrus Framework settings helper class
  *
  * Based upon http://alisothegeek.com/2011/01/wordpress-settings-api-tutorial-1/
  */
-
 require_once ABSPATH . 'wp-admin/includes/template.php';
 
 if ( class_exists( 'Aihrus_Settings' ) ) {
@@ -364,120 +361,120 @@ abstract class Aihrus_Settings {
 		$std         = esc_attr( $std );
 
 		switch ( $type ) {
-			case 'checkbox':
-				$content .= '<input class="checkbox' . $field_class . '" type="checkbox" id="' . $id . '" name="' . static::ID . '[' . $id . ']" value="1" ' . checked( $field_value, 1, false ) . ' /> ';
+		case 'checkbox':
+			$content .= '<input class="checkbox' . $field_class . '" type="checkbox" id="' . $id . '" name="' . static::ID . '[' . $id . ']" value="1" ' . checked( $field_value, 1, false ) . ' /> ';
 
-				if ( ! empty( $desc ) ) {
-					$content .= '<label for="' . $id . '"><span class="description">' . $desc . '</span></label>';
-				}
-				break;
+			if ( ! empty( $desc ) ) {
+				$content .= '<label for="' . $id . '"><span class="description">' . $desc . '</span></label>';
+			}
+			break;
 
-			case 'file':
-				$content .= '<input class="regular-text' . $field_class . '" type="file" id="' . $id . '" name="' . static::ID . '[' . $id . ']" />';
+		case 'file':
+			$content .= '<input class="regular-text' . $field_class . '" type="file" id="' . $id . '" name="' . static::ID . '[' . $id . ']" />';
 
-				if ( ! empty( $desc ) ) {
-					$content .= '<br /><span class="description">' . $desc . '</span>';
-				}
+			if ( ! empty( $desc ) ) {
+				$content .= '<br /><span class="description">' . $desc . '</span>';
+			}
 
-				break;
+			break;
 
-			case 'heading':
-				$content .= '</td></tr><tr valign="top"><td colspan="2"><h3>' . $desc . '</h3>';
-				break;
+		case 'heading':
+			$content .= '</td></tr><tr valign="top"><td colspan="2"><h3>' . $desc . '</h3>';
+			break;
 
-			case 'hidden':
-				$content .= '<input type="hidden" id="' . $id . '" name="' . static::ID . '[' . $id . ']" value="' . $field_value . '" />';
+		case 'hidden':
+			$content .= '<input type="hidden" id="' . $id . '" name="' . static::ID . '[' . $id . ']" value="' . $field_value . '" />';
 
-				break;
+			break;
 
-			case 'password':
-				$content .= '<input class="regular-text' . $field_class . '" type="password" id="' . $id . '" name="' . static::ID . '[' . $id . ']" value="' . $field_value . '" />';
+		case 'password':
+			$content .= '<input class="regular-text' . $field_class . '" type="password" id="' . $id . '" name="' . static::ID . '[' . $id . ']" value="' . $field_value . '" />';
 
-				if ( ! empty( $desc ) ) {
-					$content .= '<br /><span class="description">' . $desc . '</span>';
-				}
+			if ( ! empty( $desc ) ) {
+				$content .= '<br /><span class="description">' . $desc . '</span>';
+			}
 
-				break;
+			break;
 
-			case 'radio':
-				$i             = 1;
-				$count_choices = count( $choices );
-				foreach ( $choices as $value => $label ) {
-					$content .= '<input class="radio' . $field_class . '" type="radio" name="' . static::ID . '[' . $id . ']" id="' . $id . $i . '" value="' . $value . '" ' . checked( $field_value, $value, false ) . '> <label for="' . $id . $i . '">' . $label . '</label>';
+		case 'radio':
+			$i             = 1;
+			$count_choices = count( $choices );
+			foreach ( $choices as $value => $label ) {
+				$content .= '<input class="radio' . $field_class . '" type="radio" name="' . static::ID . '[' . $id . ']" id="' . $id . $i . '" value="' . $value . '" ' . checked( $field_value, $value, false ) . '> <label for="' . $id . $i . '">' . $label . '</label>';
 
-					if ( $i < $count_choices ) {
-						$content .= '<br />';
-					}
-
-					$i++;
+				if ( $i < $count_choices ) {
+					$content .= '<br />';
 				}
 
-				if ( ! empty( $desc ) ) {
-					$content .= '<br /><span class="description">' . $desc . '</span>';
-				}
-				break;
+				$i++;
+			}
 
-			case 'readonly':
-				$content .= '<input class="regular-text' . $field_class . '" type="text" id="' . $id . '" name="' . static::ID . '[' . $id . ']" value="' . $field_value . '" readonly="readonly" />';
+			if ( ! empty( $desc ) ) {
+				$content .= '<br /><span class="description">' . $desc . '</span>';
+			}
+			break;
 
-				if ( ! empty( $desc ) ) {
-					$content .= '<br /><span class="description">' . $desc . '</span>';
-				}
-				break;
+		case 'readonly':
+			$content .= '<input class="regular-text' . $field_class . '" type="text" id="' . $id . '" name="' . static::ID . '[' . $id . ']" value="' . $field_value . '" readonly="readonly" />';
 
-			case 'rich_editor':
-				$field_value = $options[$id];
+			if ( ! empty( $desc ) ) {
+				$content .= '<br /><span class="description">' . $desc . '</span>';
+			}
+			break;
 
-				ob_start();
-				wp_editor( $field_value, static::ID . '[' . $id . ']', array( 'textarea_name' => static::ID . '[' . $id . ']' ) );
-				$content = ob_get_clean();
+		case 'rich_editor':
+			$field_value = $options[$id];
 
-				if ( ! empty( $desc ) ) {
-					$content .= '<br /><span class="description">' . $desc . '</span>';
-				}
-				break;
+			ob_start();
+			wp_editor( $field_value, static::ID . '[' . $id . ']', array( 'textarea_name' => static::ID . '[' . $id . ']' ) );
+			$content = ob_get_clean();
 
-			case 'select':
-				$content .= '<select class="select' . $field_class . '" id="' . $id . '" name="' . static::ID . '[' . $id . ']">';
+			if ( ! empty( $desc ) ) {
+				$content .= '<br /><span class="description">' . $desc . '</span>';
+			}
+			break;
 
-				foreach ( $choices as $value => $label ) {
-					$content .= '<option value="' . $value . '"' . selected( $field_value, $value, false ) . '>' . $label . '</option>';
-				}
+		case 'select':
+			$content .= '<select class="select' . $field_class . '" id="' . $id . '" name="' . static::ID . '[' . $id . ']">';
 
-				$content .= '</select>';
+			foreach ( $choices as $value => $label ) {
+				$content .= '<option value="' . $value . '"' . selected( $field_value, $value, false ) . '>' . $label . '</option>';
+			}
 
-				if ( ! empty( $desc ) ) {
-					$content .= '<br /><span class="description">' . $desc . '</span>';
-				}
-				break;
+			$content .= '</select>';
 
-			case 'text':
-				$suggest_id = 'suggest_' . self::$suggest_id++;
-				$content   .= '<input class="regular-text' . $field_class . ' ' . $suggest_id . '" type="text" id="' . $id . '" name="' . static::ID . '[' . $id . ']" placeholder="' . $placeholder . '" value="' . $field_value . '" ' . $maxlength . ' />';
+			if ( ! empty( $desc ) ) {
+				$content .= '<br /><span class="description">' . $desc . '</span>';
+			}
+			break;
 
-				if ( ! empty( $suggest ) ) {
-					$content .= static::get_suggest( $id, $suggest_id );
-				}
+		case 'text':
+			$suggest_id = 'suggest_' . self::$suggest_id++;
+			$content   .= '<input class="regular-text' . $field_class . ' ' . $suggest_id . '" type="text" id="' . $id . '" name="' . static::ID . '[' . $id . ']" placeholder="' . $placeholder . '" value="' . $field_value . '" ' . $maxlength . ' />';
 
-				if ( ! empty( $desc ) ) {
-					$content .= '<br /><span class="description">' . $desc . '</span>';
-				}
-				break;
+			if ( ! empty( $suggest ) ) {
+				$content .= static::get_suggest( $id, $suggest_id );
+			}
 
-			case 'textarea':
-				$content .= '<textarea class="' . $field_class . '" id="' . $id . '" name="' . static::ID . '[' . $id . ']" placeholder="' . $placeholder . '" ' . $maxlength . ' rows="5" cols="30">' . $field_value . '</textarea>';
+			if ( ! empty( $desc ) ) {
+				$content .= '<br /><span class="description">' . $desc . '</span>';
+			}
+			break;
 
-				if ( ! empty( $desc ) ) {
-					$content .= '<br /><span class="description">' . $desc . '</span>';
-				}
-				break;
+		case 'textarea':
+			$content .= '<textarea class="' . $field_class . '" id="' . $id . '" name="' . static::ID . '[' . $id . ']" placeholder="' . $placeholder . '" ' . $maxlength . ' rows="5" cols="30">' . $field_value . '</textarea>';
 
-			case 'content':
-				$content .= $desc . '</td></tr>';
-				break;
+			if ( ! empty( $desc ) ) {
+				$content .= '<br /><span class="description">' . $desc . '</span>';
+			}
+			break;
 
-			default:
-				break;
+		case 'content':
+			$content .= $desc . '</td></tr>';
+			break;
+
+		default:
+			break;
 		}
 
 		if ( ! $do_echo ) {
@@ -643,93 +640,93 @@ abstract class Aihrus_Settings {
 
 	public static function validators( $validate, $id, &$input, $default, &$errors ) {
 		switch ( $validate ) {
-			case 'absint':
-			case 'intval':
-				if ( '' !== $input[ $id ] ) {
-					$input[ $id ] = $validate( $input[ $id ] );
-				} else {
-					$input[ $id ] = $default;
-				}
-				break;
-
-			case 'email':
-				$input[ $id ] = self::validate_email( $input[ $id ], $default );
-				break;
-
-			case 'ids':
-				$input[ $id ] = self::validate_ids( $input[ $id ], $default );
-				break;
-
-			case 'is_true':
-				$input[ $id ] = self::is_true( $input[ $id ] );
-				break;
-
-			case 'min1':
-				$input[ $id ] = intval( $input[ $id ] );
-				if ( 0 >= $input[ $id ] ) {
-					$input[ $id ] = $default;
-				}
-				break;
-
-			case 'nozero':
-				$input[ $id ] = intval( $input[ $id ] );
-				if ( 0 === $input[ $id ] ) {
-					$input[ $id ] = $default;
-				}
-				break;
-
-			case 'order':
-				$input[ $id ] = self::validate_order( $input[ $id ], $default );
-				break;
-
-			case 'required':
-				if ( empty( $input[ $id ] ) ) {
-					$errors[ $id ] = esc_html__( 'Required' );
-				}
-				break;
-
-			case 'slash_sanitize_title':
-				$temp = explode( '/', $input[ $id ] );
-				$temp = array_map( 'sanitize_title', $temp );
-				$temp = implode( '/', $temp );
-
-				$input[ $id ] = $temp;
-				break;
-
-			case 'slug':
-				$input[ $id ] = self::validate_slug( $input[ $id ], $default );
-				$input[ $id ] = strtolower( $input[ $id ] );
-				break;
-
-			case 'slugs':
-				$input[ $id ] = self::validate_slugs( $input[ $id ], $default );
-				$input[ $id ] = strtolower( $input[ $id ] );
-				break;
-
-			case 'term':
-				$input[ $id ] = self::validate_term( $input[ $id ], $default );
-				$input[ $id ] = strtolower( $input[ $id ] );
-				break;
-
-			case 'terms':
-				$input[ $id ] = self::validate_terms( $input[ $id ], $default );
-				break;
-
-			case 'trim':
-				$options = explode( "\n", $input[ $id ] );
-				foreach ( $options as $key => $value )
-					$options[ $key ] = trim( $value );
-
-				$input[ $id ] = implode( "\n", $options );
-				break;
-
-			case 'url':
-				$input[ $id ] = self::validate_url( $input[ $id ], $default );
-				break;
-
-			default:
+		case 'absint':
+		case 'intval':
+			if ( '' !== $input[ $id ] ) {
 				$input[ $id ] = $validate( $input[ $id ] );
-				break;
+			} else {
+				$input[ $id ] = $default;
+			}
+			break;
+
+		case 'email':
+			$input[ $id ] = self::validate_email( $input[ $id ], $default );
+			break;
+
+		case 'ids':
+			$input[ $id ] = self::validate_ids( $input[ $id ], $default );
+			break;
+
+		case 'is_true':
+			$input[ $id ] = self::is_true( $input[ $id ] );
+			break;
+
+		case 'min1':
+			$input[ $id ] = intval( $input[ $id ] );
+			if ( 0 >= $input[ $id ] ) {
+				$input[ $id ] = $default;
+			}
+			break;
+
+		case 'nozero':
+			$input[ $id ] = intval( $input[ $id ] );
+			if ( 0 === $input[ $id ] ) {
+				$input[ $id ] = $default;
+			}
+			break;
+
+		case 'order':
+			$input[ $id ] = self::validate_order( $input[ $id ], $default );
+			break;
+
+		case 'required':
+			if ( empty( $input[ $id ] ) ) {
+				$errors[ $id ] = esc_html__( 'Required' );
+			}
+			break;
+
+		case 'slash_sanitize_title':
+			$temp = explode( '/', $input[ $id ] );
+			$temp = array_map( 'sanitize_title', $temp );
+			$temp = implode( '/', $temp );
+
+			$input[ $id ] = $temp;
+			break;
+
+		case 'slug':
+			$input[ $id ] = self::validate_slug( $input[ $id ], $default );
+			$input[ $id ] = strtolower( $input[ $id ] );
+			break;
+
+		case 'slugs':
+			$input[ $id ] = self::validate_slugs( $input[ $id ], $default );
+			$input[ $id ] = strtolower( $input[ $id ] );
+			break;
+
+		case 'term':
+			$input[ $id ] = self::validate_term( $input[ $id ], $default );
+			$input[ $id ] = strtolower( $input[ $id ] );
+			break;
+
+		case 'terms':
+			$input[ $id ] = self::validate_terms( $input[ $id ], $default );
+			break;
+
+		case 'trim':
+			$options = explode( "\n", $input[ $id ] );
+			foreach ( $options as $key => $value )
+				$options[ $key ] = trim( $value );
+
+			$input[ $id ] = implode( "\n", $options );
+			break;
+
+		case 'url':
+			$input[ $id ] = self::validate_url( $input[ $id ], $default );
+			break;
+
+		default:
+			$input[ $id ] = $validate( $input[ $id ] );
+			break;
 		}
 	}
 
@@ -864,13 +861,13 @@ abstract class Aihrus_Settings {
 		wp_enqueue_script( 'suggest' );
 
 		switch ( $id ) {
-			case 'category':
-				$taxonomy = 'category';
-				break;
+		case 'category':
+			$taxonomy = 'category';
+			break;
 
-			case 'tags':
-				$taxonomy = 'post_tag';
-				break;
+		case 'tags':
+			$taxonomy = 'post_tag';
+			break;
 		}
 
 		$ajax_url   = site_url() . '/wp-admin/admin-ajax.php';

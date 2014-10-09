@@ -1,29 +1,27 @@
 <?php
 /**
-Aihrus Framework
-Copyright (C) 2014  Michael Cannon
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along
-with this program; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ * Aihrus Framework
+ * Copyright (C) 2014  Michael Cannon
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
+
 
 if ( class_exists( 'Aihrus_Common' ) ) {
 	return;
 }
 
 
-abstract class Aihrus_Common  {
+abstract class Aihrus_Common {
 	public static $donate_button;
 	public static $donate_link;
 	public static $markdown_helper;
@@ -135,8 +133,6 @@ EOD;
 	 *
 	 * @ref http://in1.php.net/manual/en/function.array-values.php#41967
 	 */
-
-
 	public static function array_values_recursive( $ary ) {
 		$lst = array();
 		foreach ( array_keys( $ary ) as $k ) {
@@ -497,6 +493,8 @@ EOD;
 
 
 	/**
+	 *
+	 *
 	 * @ref http://wpbandit.com/code/check-a-users-role-in-wordpress/
 	 */
 	public static function check_user_role( $roles = array(), $user_id = null ) {
@@ -572,7 +570,7 @@ EOD;
 	/**
 	 * Generate date archive rewrite rules for a given custom post type
 	 *
-	 * @param string $cpt slug of the custom post type
+	 * @param string  $cpt slug of the custom post type
 	 * @return rules returns a set of rewrite rules for Wordpress to handle
 	 */
 	public static function rewrite_rules_date_archives( $cpt, $wp_rewrite ) {
@@ -582,17 +580,17 @@ EOD;
 			return $rules;
 		}
 
-		$dates = array( 
-			array( 
+		$dates = array(
+			array(
 				'rule' => '([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})',
 				'vars' => array( 'year', 'monthnum', 'day' ) ),
-			array( 
+			array(
 				'rule' => '([0-9]{4})/([0-9]{1,2})',
 				'vars' => array( 'year', 'monthnum' ) ),
-			array( 
+			array(
 				'rule' => '([0-9]{4})',
 				'vars' => array( 'year' ) ),
-			);
+		);
 
 		foreach ( $dates as $data ) {
 			$query = 'index.php?post_type=' . $cpt;
@@ -709,7 +707,7 @@ EOD;
 	public static function define_options_value( $setting, $parts ) {
 		$value = $parts['std'];
 
-		switch( $parts['type'] ) {
+		switch ( $parts['type'] ) {
 		case 'checkbox':
 			if ( Aihrus_Settings::is_false( $value ) ) {
 				$value = 'false';
@@ -764,6 +762,8 @@ EOD;
 		return $value;
 	}
 
+
 }
+
 
 ?>
