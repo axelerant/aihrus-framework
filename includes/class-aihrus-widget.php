@@ -18,13 +18,12 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-if ( class_exists( 'Aihrus_Widget' ) )
+if ( class_exists( 'Aihrus_Widget' ) ) {
 	return;
+}
 
-require_once 'interface-aihrus-widget.php';
 
-
-abstract class Aihrus_Widget extends WP_Widget implements Aihrus_Widget_Interface {
+abstract class Aihrus_Widget extends WP_Widget {
 	public static $default = array(
 		'choices' => array(), // key => value
 		'class' => null, // warning, etc.
@@ -154,15 +153,17 @@ abstract class Aihrus_Widget extends WP_Widget implements Aihrus_Widget_Interfac
 		$do_return = false;
 		switch ( $type ) {
 			case 'heading':
-				if ( ! empty( $desc ) )
+				if ( ! empty( $desc ) ) {
 					echo '<h3>' . $desc . '</h3>';
+				}
 
 				$do_return = true;
 				break;
 
 			case 'expand_all':
-				if ( ! empty( $desc ) )
+				if ( ! empty( $desc ) ) {
 					echo '<h3>' . $desc . '</h3>';
+				}
 
 				echo '<a id="' . $this->get_field_id( $id ) . '-expand" style="cursor:pointer;" onclick="jQuery( \'.af-collapsible-control\' ).slideToggle(); jQuery( \'.af-collapsible\' ).slideToggle(); jQuery( this ).hide(); jQuery( \'#' . $this->get_field_id( $id ) . '-collapse\' ).show();">&raquo; ' . esc_html__( 'Expand All Options' ) . '</a>';
 				echo '<a id="' . $this->get_field_id( $id ) . '-collapse" style="cursor:pointer; display: none;" onclick="jQuery( \'.af-collapsible-control\' ).slideToggle(); jQuery( \'.af-collapsible\' ).slideToggle(); jQuery( this ).hide(); jQuery( \'#' . $this->get_field_id( $id ) . '-expand\' ).show();">&laquo; ' . esc_html__( 'Collapse All Options' ) . '</a>';
@@ -171,8 +172,9 @@ abstract class Aihrus_Widget extends WP_Widget implements Aihrus_Widget_Interfac
 				break;
 
 			case 'expand_begin':
-				if ( ! empty( $desc ) )
+				if ( ! empty( $desc ) ) {
 					echo '<h3>' . $desc . '</h3>';
+				}
 
 				echo '<span class="af-collapsible-control">';
 				echo '<a id="' . $this->get_field_id( $id ) . '-expand" style="cursor:pointer;" onclick="jQuery( \'div#' . $this->get_field_id( $id ) . '\' ).slideToggle(); jQuery( this ).hide(); jQuery( \'#' . $this->get_field_id( $id ) . '-collapse\' ).show();">&raquo; ' . esc_html__( 'Expand' ) . '</a>';
@@ -207,8 +209,9 @@ abstract class Aihrus_Widget extends WP_Widget implements Aihrus_Widget_Interfac
 			$options[$id] = 0;
 
 		$field_class = '';
-		if ( ! empty( $class ) )
+		if ( ! empty( $class ) ) {
 			$field_class = ' ' . $class;
+		}
 
 		echo '<p>';
 
@@ -223,8 +226,9 @@ abstract class Aihrus_Widget extends WP_Widget implements Aihrus_Widget_Interfac
 				echo '<label for="' . $this->get_field_id( $id ) . '">' . $title . '</label>';
 				echo '<select id="' . $this->get_field_id( $id ) . '"class="select' . $field_class . '" name="' . $this->get_field_name( $id ) . '">';
 
-				foreach ( $choices as $value => $label )
+				foreach ( $choices as $value => $label ) {
 					echo '<option value="' . esc_attr( $value ) . '"' . selected( $options[$id], $value, false ) . '>' . $label . '</option>';
+				}
 
 				echo '</select>';
 				break;
@@ -235,8 +239,10 @@ abstract class Aihrus_Widget extends WP_Widget implements Aihrus_Widget_Interfac
 
 				foreach ( $choices as $value => $label ) {
 					echo '<input class="radio' . $field_class . '" type="radio" name="' . $this->get_field_name( $id ) . '" id="' . $this->get_field_name( $id . $i ) . '" value="' . esc_attr( $value ) . '" ' . checked( $options[$id], $value, false ) . '> <label for="' . $this->get_field_name( $id . $i ) . '">' . $label . '</label>';
-					if ( $i < $count_options )
+					if ( $i < $count_options ) {
 						echo '<br />';
+					}
+
 					$i++;
 				}
 
@@ -267,16 +273,18 @@ abstract class Aihrus_Widget extends WP_Widget implements Aihrus_Widget_Interfac
 				$suggest_id = 'suggest_' . self::$suggest_id++;
 				echo '<input class="widefat' . $field_class . ' ' . $suggest_id . '" type="text" id="' . $this->get_field_id( $id ) . '" name="' . $this->get_field_name( $id ) . '" placeholder="' . $std . '" value="' . esc_attr( $options[$id] ) . '" />';
 
-				if ( $suggest )
+				if ( $suggest ) {
 					echo static::get_suggest( $id, $suggest_id );
+				}
 				break;
 
 			default:
 				break;
 		}
 
-		if ( ! empty( $desc ) )
+		if ( ! empty( $desc ) ) {
 			echo '<br /><span class="setting-description"><small>' . $desc . '</small></span>';
+		}
 
 		echo '</p>';
 

@@ -18,13 +18,12 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-if ( class_exists( 'Aihrus_Common' ) )
+if ( class_exists( 'Aihrus_Common' ) ) {
 	return;
+}
 
-require_once 'interface-aihrus-common.php';
 
-
-abstract class Aihrus_Common implements Aihrus_Common_Interface {
+abstract class Aihrus_Common  {
 	public static $donate_button;
 	public static $donate_link;
 	public static $markdown_helper;
@@ -65,8 +64,9 @@ EOD;
 		}
 
 		$notices = get_transient( $notice_key );
-		if ( false === $notices )
+		if ( false === $notices ) {
 			$notices = array();
+		}
 
 		$notices[] = $notice_name;
 
@@ -86,8 +86,9 @@ EOD;
 		$notice_key = self::get_notice_key();
 
 		$notices = get_transient( $notice_key );
-		if ( false === $notices )
+		if ( false === $notices ) {
 			return;
+		}
 
 		$notices = array_unique( $notices );
 		foreach ( $notices as $notice ) {
@@ -105,8 +106,9 @@ EOD;
 
 
 	public static function get_notice_key() {
-		if ( is_null( static::$notice_key ) )
+		if ( is_null( static::$notice_key ) ) {
 			self::set_notice_key();
+		}
 
 		return static::$notice_key;
 	}
@@ -154,8 +156,9 @@ EOD;
 
 
 	public static function notice_donate( $disable_donate = null, $item_name = null ) {
-		if ( $disable_donate )
+		if ( $disable_donate ) {
 			return;
+		}
 
 		$text = sprintf( esc_html__( 'Please donate $5 towards ongoing free support and development of the "%1$s" plugin. %2$s' ), $item_name, self::$donate_button );
 
@@ -164,25 +167,29 @@ EOD;
 
 
 	public static function get_scripts() {
-		if ( static::$scripts_called )
+		if ( static::$scripts_called ) {
 			return;
+		}
 
-		foreach ( static::$scripts as $script )
+		foreach ( static::$scripts as $script ) {
 			echo $script;
+		}
 
 		static::$scripts_called = true;
 	}
 
 
 	public static function get_styles() {
-		if ( empty( self::$styles ) )
+		if ( empty( self::$styles ) ) {
 			return;
+		}
 
 		if ( empty( self::$styles_called ) ) {
 			echo '<style>';
 
-			foreach ( self::$styles as $style )
+			foreach ( self::$styles as $style ) {
 				echo $style;
+			}
 
 			echo '</style>';
 
@@ -220,14 +227,16 @@ EOD;
 	 * If incoming link is empty, then get_site_url() is used instead.
 	 */
 	public static function create_link( $link, $title = null, $target = null, $return_as_tag = true ) {
-		if ( empty( $link ) )
+		if ( empty( $link ) ) {
 			$link = get_site_url();
+		}
 
 		if ( preg_match( '#^\d+$#', $link ) ) {
 			$permalink = get_permalink( $link );
 			$tag_title = get_the_title( $link );
-			if ( empty( $title ) )
+			if ( empty( $title ) ) {
 				$title = $tag_title;
+			}
 
 			$tag  = '<a href="';
 			$tag .= $permalink;
@@ -240,11 +249,13 @@ EOD;
 			$orig_link = empty( $title ) ? $link : $title;
 			$do_http   = true;
 
-			if ( 0 === strpos( $link, '/' ) )
+			if ( 0 === strpos( $link, '/' ) ) {
 				$do_http = false;
+			}
 
-			if ( $do_http && 0 === preg_match( '#https?://#', $link ) )
+			if ( $do_http && 0 === preg_match( '#https?://#', $link ) ) {
 				$link = 'http://' . $link;
+			}
 
 			$permalink = $link;
 
@@ -255,24 +266,27 @@ EOD;
 			$tag .= '</a>';
 		}
 
-		if ( ! empty( $target ) && is_string( $target ) )
+		if ( ! empty( $target ) && is_string( $target ) ) {
 			$tag = links_add_target( $tag, $target );
+		}
 
-		if ( $return_as_tag )
+		if ( $return_as_tag ) {
 			return $tag;
-		else
+		} else {
 			return array(
 				'link' => $permalink,
 				'tag' => $tag,
 			);
+		}
 	}
 
 
 	public static function add_media( $post_id, $media_src, $media_name = null, $featured_image = true ) {
 		require_once ABSPATH . 'wp-admin/includes/image.php';
 
-		if ( empty( $media_name ) )
+		if ( empty( $media_name ) ) {
 			$media_name = basename( $media_src );
+		}
 
 		$wp_filetype = wp_check_filetype( $media_name, null );
 		$attachment  = array(
@@ -288,8 +302,9 @@ EOD;
 		$metadata = wp_generate_attachment_metadata( $image_id, $file_name );
 		wp_update_attachment_metadata( $image_id, $metadata );
 
-		if ( $featured_image )
+		if ( $featured_image ) {
 			update_post_meta( $post_id, '_thumbnail_id', $image_id );
+		}
 
 		return $image_id;
 	}
@@ -333,16 +348,18 @@ EOD;
 		$xpath = new DOMXPath( $doc );
 		$src   = $xpath->evaluate( 'string(//img/@src)' );
 
-		if ( $strip_protocol )
+		if ( $strip_protocol ) {
 			$src = self::strip_protocol( $src );
+		}
 
 		return $src;
 	}
 
 
 	public static function clean_string( $string ) {
-		if ( ! is_string( $string ) )
+		if ( ! is_string( $string ) ) {
 			return $string;
+		}
 
 		return trim( strip_shortcodes( strip_tags( $string ) ) );
 	}
@@ -431,8 +448,9 @@ EOD;
 					// on the stack so hopefully we're not introducing more
 					// problems.
 
-					if ( end( $tag_stack ) == $tag_inner )
+					if ( end( $tag_stack ) == $tag_inner ) {
 						array_pop( $tag_stack );
+					}
 				} elseif ( $tag[$func_strlen( $tag ) - 2] == '/' || in_array( strtolower( $tag_inner ), $unpaired_tags ) ) {
 					// Self-closing or unpaired tag
 					$output .= $tag;
@@ -449,18 +467,21 @@ EOD;
 
 		// Print any remaining text after the last tag, if there's room
 
-		if ( $output_length < $max_length && $position < $func_strlen( $html ) )
+		if ( $output_length < $max_length && $position < $func_strlen( $html ) ) {
 			$output .= $func_strcut( $html, $position, $max_length - $output_length );
+		}
 
 		$truncated = $func_strlen( $html ) - $position > $max_length - $output_length;
 
 		// add terminator if it was truncated in loop or just above here
-		if ( $truncated || $force_indicator )
+		if ( $truncated || $force_indicator ) {
 			$output .= $indicator;
+		}
 
 		// Close any open tags
-		while ( ! empty( $tag_stack ) )
+		while ( ! empty( $tag_stack ) ) {
 			$output .= '</'.array_pop( $tag_stack ).'>';
+		}
 
 		return $output;
 	}
@@ -487,12 +508,14 @@ EOD;
 		}
 
 		// No user found, return
-		if ( empty( $user ) )
+		if ( empty( $user ) ) {
 			return false;
+		}
 
 		// Append administrator to roles, if necessary
-		if ( ! in_array( 'administrator', $roles ) )
+		if ( ! in_array( 'administrator', $roles ) ) {
 			$roles[] = 'administrator';
+		}
 
 		// Loop through user roles
 		foreach ( $user->roles as $role ) {

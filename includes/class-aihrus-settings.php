@@ -325,6 +325,11 @@ abstract class Aihrus_Settings {
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+	 */
 	public static function display_setting( $args = array(), $do_echo = true, $input = null ) {
 		$content = '';
 
