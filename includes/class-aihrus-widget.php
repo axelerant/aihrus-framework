@@ -130,7 +130,7 @@ abstract class Aihrus_Widget extends WP_Widget {
 
 		$form_parts = static::form_parts( $instance, $this->number );
 		foreach ( $form_parts as $key => $part ) {
-			$part[ 'id' ] = $key;
+			$part['id'] = $key;
 			$this->display_setting( $part, $instance );
 		}
 	}
@@ -150,47 +150,47 @@ abstract class Aihrus_Widget extends WP_Widget {
 
 		$do_return = false;
 		switch ( $type ) {
-		case 'heading':
-			if ( ! empty( $desc ) ) {
-				echo '<h3>' . $desc . '</h3>';
-			}
+			case 'heading':
+				if ( ! empty( $desc ) ) {
+					echo '<h3>' . $desc . '</h3>';
+				}
 
-			$do_return = true;
-			break;
+				$do_return = true;
+				break;
 
-		case 'expand_all':
-			if ( ! empty( $desc ) ) {
-				echo '<h3>' . $desc . '</h3>';
-			}
+			case 'expand_all':
+				if ( ! empty( $desc ) ) {
+					echo '<h3>' . $desc . '</h3>';
+				}
 
-			echo '<a id="' . $this->get_field_id( $id ) . '-expand" style="cursor:pointer;" onclick="jQuery( \'.af-collapsible-control\' ).slideToggle(); jQuery( \'.af-collapsible\' ).slideToggle(); jQuery( this ).hide(); jQuery( \'#' . $this->get_field_id( $id ) . '-collapse\' ).show();">&raquo; ' . esc_html__( 'Expand All Options' ) . '</a>';
-			echo '<a id="' . $this->get_field_id( $id ) . '-collapse" style="cursor:pointer; display: none;" onclick="jQuery( \'.af-collapsible-control\' ).slideToggle(); jQuery( \'.af-collapsible\' ).slideToggle(); jQuery( this ).hide(); jQuery( \'#' . $this->get_field_id( $id ) . '-expand\' ).show();">&laquo; ' . esc_html__( 'Collapse All Options' ) . '</a>';
+				echo '<a id="' . $this->get_field_id( $id ) . '-expand" style="cursor:pointer;" onclick="jQuery( \'.af-collapsible-control\' ).slideToggle(); jQuery( \'.af-collapsible\' ).slideToggle(); jQuery( this ).hide(); jQuery( \'#' . $this->get_field_id( $id ) . '-collapse\' ).show();">&raquo; ' . esc_html__( 'Expand All Options' ) . '</a>';
+				echo '<a id="' . $this->get_field_id( $id ) . '-collapse" style="cursor:pointer; display: none;" onclick="jQuery( \'.af-collapsible-control\' ).slideToggle(); jQuery( \'.af-collapsible\' ).slideToggle(); jQuery( this ).hide(); jQuery( \'#' . $this->get_field_id( $id ) . '-expand\' ).show();">&laquo; ' . esc_html__( 'Collapse All Options' ) . '</a>';
 
-			$do_return = true;
-			break;
+				$do_return = true;
+				break;
 
-		case 'expand_begin':
-			if ( ! empty( $desc ) ) {
-				echo '<h3>' . $desc . '</h3>';
-			}
+			case 'expand_begin':
+				if ( ! empty( $desc ) ) {
+					echo '<h3>' . $desc . '</h3>';
+				}
 
-			echo '<span class="af-collapsible-control">';
-			echo '<a id="' . $this->get_field_id( $id ) . '-expand" style="cursor:pointer;" onclick="jQuery( \'div#' . $this->get_field_id( $id ) . '\' ).slideToggle(); jQuery( this ).hide(); jQuery( \'#' . $this->get_field_id( $id ) . '-collapse\' ).show();">&raquo; ' . esc_html__( 'Expand' ) . '</a>';
-			echo '<a id="' . $this->get_field_id( $id ) . '-collapse" style="cursor:pointer; display: none;" onclick="jQuery( \'div#' . $this->get_field_id( $id ) . '\' ).slideToggle(); jQuery( this ).hide(); jQuery( \'#' . $this->get_field_id( $id ) . '-expand\' ).show();">&laquo; ' . esc_html__( 'Collapse' ) . '</a>';
-			echo '</span>';
-			echo '<div id="' . $this->get_field_id( $id ) . '" style="display:none" class="af-collapsible">';
+				echo '<span class="af-collapsible-control">';
+				echo '<a id="' . $this->get_field_id( $id ) . '-expand" style="cursor:pointer;" onclick="jQuery( \'div#' . $this->get_field_id( $id ) . '\' ).slideToggle(); jQuery( this ).hide(); jQuery( \'#' . $this->get_field_id( $id ) . '-collapse\' ).show();">&raquo; ' . esc_html__( 'Expand' ) . '</a>';
+				echo '<a id="' . $this->get_field_id( $id ) . '-collapse" style="cursor:pointer; display: none;" onclick="jQuery( \'div#' . $this->get_field_id( $id ) . '\' ).slideToggle(); jQuery( this ).hide(); jQuery( \'#' . $this->get_field_id( $id ) . '-expand\' ).show();">&laquo; ' . esc_html__( 'Collapse' ) . '</a>';
+				echo '</span>';
+				echo '<div id="' . $this->get_field_id( $id ) . '" style="display:none" class="af-collapsible">';
 
-			$do_return = true;
-			break;
+				$do_return = true;
+				break;
 
-		case 'expand_end':
-			echo '</div>';
+			case 'expand_end':
+				echo '</div>';
 
-			$do_return = true;
-			break;
+				$do_return = true;
+				break;
 
-		default:
-			break;
+			default:
+				break;
 		}
 
 		if ( $do_return ) {
@@ -201,10 +201,11 @@ abstract class Aihrus_Widget extends WP_Widget {
 			return;
 		}
 
-		if ( ! isset( $options[$id] ) && $type != 'checkbox' )
-			$options[$id] = $std;
-		elseif ( ! isset( $options[$id] ) )
-			$options[$id] = 0;
+		if ( ! isset( $options[ $id ] ) && $type != 'checkbox' ) {
+			$options[ $id ] = $std;
+		} elseif ( ! isset( $options[ $id ] ) ) {
+			$options[ $id ] = 0;
+		}
 
 		$field_class = '';
 		if ( ! empty( $class ) ) {
@@ -214,70 +215,70 @@ abstract class Aihrus_Widget extends WP_Widget {
 		echo '<p>';
 
 		switch ( $type ) {
-		case 'checkbox':
-			echo '<input class="checkbox' . $field_class . '" type="checkbox" id="' . $this->get_field_id( $id ) . '" name="' . $this->get_field_name( $id ) . '" value="1" ' . checked( $options[$id], 1, false ) . ' /> ';
+			case 'checkbox':
+				echo '<input class="checkbox' . $field_class . '" type="checkbox" id="' . $this->get_field_id( $id ) . '" name="' . $this->get_field_name( $id ) . '" value="1" ' . checked( $options[ $id ], 1, false ) . ' /> ';
 
-			echo '<label for="' . $this->get_field_id( $id ) . '">' . $title . '</label>';
-			break;
+				echo '<label for="' . $this->get_field_id( $id ) . '">' . $title . '</label>';
+				break;
 
-		case 'select':
-			echo '<label for="' . $this->get_field_id( $id ) . '">' . $title . '</label>';
-			echo '<select id="' . $this->get_field_id( $id ) . '"class="select' . $field_class . '" name="' . $this->get_field_name( $id ) . '">';
+			case 'select':
+				echo '<label for="' . $this->get_field_id( $id ) . '">' . $title . '</label>';
+				echo '<select id="' . $this->get_field_id( $id ) . '"class="select' . $field_class . '" name="' . $this->get_field_name( $id ) . '">';
 
-			foreach ( $choices as $value => $label ) {
-				echo '<option value="' . esc_attr( $value ) . '"' . selected( $options[$id], $value, false ) . '>' . $label . '</option>';
-			}
-
-			echo '</select>';
-			break;
-
-		case 'radio':
-			$i             = 0;
-			$count_options = count( $options ) - 1;
-
-			foreach ( $choices as $value => $label ) {
-				echo '<input class="radio' . $field_class . '" type="radio" name="' . $this->get_field_name( $id ) . '" id="' . $this->get_field_name( $id . $i ) . '" value="' . esc_attr( $value ) . '" ' . checked( $options[$id], $value, false ) . '> <label for="' . $this->get_field_name( $id . $i ) . '">' . $label . '</label>';
-				if ( $i < $count_options ) {
-					echo '<br />';
+				foreach ( $choices as $value => $label ) {
+					echo '<option value="' . esc_attr( $value ) . '"' . selected( $options[ $id ], $value, false ) . '>' . $label . '</option>';
 				}
 
-				$i++;
-			}
+				echo '</select>';
+				break;
 
-			echo '<label for="' . $this->get_field_id( $id ) . '">' . $title . '</label>';
-			break;
+			case 'radio':
+				$i             = 0;
+				$count_options = count( $options ) - 1;
 
-		case 'textarea':
-			echo '<label for="' . $this->get_field_id( $id ) . '">' . $title . '</label>';
+				foreach ( $choices as $value => $label ) {
+					echo '<input class="radio' . $field_class . '" type="radio" name="' . $this->get_field_name( $id ) . '" id="' . $this->get_field_name( $id . $i ) . '" value="' . esc_attr( $value ) . '" ' . checked( $options[ $id ], $value, false ) . '> <label for="' . $this->get_field_name( $id . $i ) . '">' . $label . '</label>';
+					if ( $i < $count_options ) {
+						echo '<br />';
+					}
 
-			echo '<textarea class="widefat' . $field_class . '" id="' . $this->get_field_id( $id ) . '" name="' . $this->get_field_name( $id ) . '" placeholder="' . $std . '" rows="5" cols="30">' . wp_htmledit_pre( $options[$id] ) . '</textarea>';
-			break;
+					$i++;
+				}
 
-		case 'password':
-			echo '<label for="' . $this->get_field_id( $id ) . '">' . $title . '</label>';
+				echo '<label for="' . $this->get_field_id( $id ) . '">' . $title . '</label>';
+				break;
 
-			echo '<input class="widefat' . $field_class . '" type="password" id="' . $this->get_field_id( $id ) . '" name="' . $this->get_field_name( $id ) . '" value="' . esc_attr( $options[$id] ) . '" />';
-			break;
+			case 'textarea':
+				echo '<label for="' . $this->get_field_id( $id ) . '">' . $title . '</label>';
 
-		case 'readonly':
-			echo '<label for="' . $this->get_field_id( $id ) . '">' . $title . '</label>';
+				echo '<textarea class="widefat' . $field_class . '" id="' . $this->get_field_id( $id ) . '" name="' . $this->get_field_name( $id ) . '" placeholder="' . $std . '" rows="5" cols="30">' . wp_htmledit_pre( $options[ $id ] ) . '</textarea>';
+				break;
 
-			echo '<input class="widefat' . $field_class . '" type="text" id="' . $this->get_field_id( $id ) . '" name="' . $this->get_field_name( $id ) . '" value="' . esc_attr( $options[$id] ) . '" readonly="readonly" />';
-			break;
+			case 'password':
+				echo '<label for="' . $this->get_field_id( $id ) . '">' . $title . '</label>';
 
-		case 'text':
-			echo '<label for="' . $this->get_field_id( $id ) . '">' . $title . '</label>';
+				echo '<input class="widefat' . $field_class . '" type="password" id="' . $this->get_field_id( $id ) . '" name="' . $this->get_field_name( $id ) . '" value="' . esc_attr( $options[ $id ] ) . '" />';
+				break;
 
-			$suggest_id = 'suggest_' . self::$suggest_id++;
-			echo '<input class="widefat' . $field_class . ' ' . $suggest_id . '" type="text" id="' . $this->get_field_id( $id ) . '" name="' . $this->get_field_name( $id ) . '" placeholder="' . $std . '" value="' . esc_attr( $options[$id] ) . '" />';
+			case 'readonly':
+				echo '<label for="' . $this->get_field_id( $id ) . '">' . $title . '</label>';
 
-			if ( $suggest ) {
-				echo static::get_suggest( $id, $suggest_id );
-			}
-			break;
+				echo '<input class="widefat' . $field_class . '" type="text" id="' . $this->get_field_id( $id ) . '" name="' . $this->get_field_name( $id ) . '" value="' . esc_attr( $options[ $id ] ) . '" readonly="readonly" />';
+				break;
 
-		default:
-			break;
+			case 'text':
+				echo '<label for="' . $this->get_field_id( $id ) . '">' . $title . '</label>';
+
+				$suggest_id = 'suggest_' . self::$suggest_id++;
+				echo '<input class="widefat' . $field_class . ' ' . $suggest_id . '" type="text" id="' . $this->get_field_id( $id ) . '" name="' . $this->get_field_name( $id ) . '" placeholder="' . $std . '" value="' . esc_attr( $options[ $id ] ) . '" />';
+
+				if ( $suggest ) {
+					echo static::get_suggest( $id, $suggest_id );
+				}
+				break;
+
+			default:
+				break;
 		}
 
 		if ( ! empty( $desc ) ) {

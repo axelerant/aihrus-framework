@@ -136,7 +136,7 @@ EOD;
 	public static function array_values_recursive( $ary ) {
 		$lst = array();
 		foreach ( array_keys( $ary ) as $k ) {
-			$v = $ary[$k];
+			$v = $ary[ $k ];
 			if ( is_scalar( $v ) ) {
 				$lst[] = $v;
 			} elseif ( is_array( $v ) ) {
@@ -447,7 +447,7 @@ EOD;
 					if ( end( $tag_stack ) == $tag_inner ) {
 						array_pop( $tag_stack );
 					}
-				} elseif ( $tag[$func_strlen( $tag ) - 2] == '/' || in_array( strtolower( $tag_inner ), $unpaired_tags ) ) {
+				} elseif ( $tag[ $func_strlen( $tag ) - 2 ] == '/' || in_array( strtolower( $tag_inner ), $unpaired_tags ) ) {
 					// Self-closing or unpaired tag
 					$output .= $tag;
 				} else {
@@ -594,10 +594,10 @@ EOD;
 
 		foreach ( $dates as $data ) {
 			$query = 'index.php?post_type=' . $cpt;
-			$rule  = $slug_archive . '/' . $data[ 'rule' ];
+			$rule  = $slug_archive . '/' . $data['rule'];
 
 			$i = 1;
-			foreach ( $data[ 'vars' ] as $var ) {
+			foreach ( $data['vars'] as $var ) {
 				$query .= '&' . $var . '=' . $wp_rewrite->preg_index( $i );
 				$i++;
 			}
@@ -631,8 +631,8 @@ EOD;
 
 	public static function rewrite_rules_feed( $wp_rewrite ) {
 		$rules = array(
-			'feed/(.+)' => 'index.php?feed=' . $wp_rewrite->preg_index(1),
-			'(.+).xml' => 'index.php?feed=' . $wp_rewrite->preg_index(1),
+			'feed/(.+)' => 'index.php?feed=' . $wp_rewrite->preg_index( 1 ),
+			'(.+).xml' => 'index.php?feed=' . $wp_rewrite->preg_index( 1 ),
 		);
 
 		return $rules;
@@ -694,8 +694,8 @@ EOD;
 
 		$choices = $parts['choices'];
 		$choices = array_keys( $parts['choices'] );
-		if ( '' == $choices[ 0 ] ) {
-			$choices[ 0 ] = 'false';
+		if ( '' == $choices[0] ) {
+			$choices[0] = 'false';
 		}
 
 		$choices = implode( ', ', $choices );
@@ -708,53 +708,53 @@ EOD;
 		$value = $parts['std'];
 
 		switch ( $parts['type'] ) {
-		case 'checkbox':
-			if ( Aihrus_Settings::is_false( $value ) ) {
-				$value = 'false';
-			} elseif ( Aihrus_Settings::is_true( $value ) ) {
-				$value = 'true';
-			} elseif ( empty( $value ) ) {
-				$value = esc_html__( 'TBD empty ' ) . $parts['type'];
-			}
-			break;
-
-		case 'select':
-			if ( empty( $value ) ) {
-				$value = esc_html__( 'Pick an option' );
-			}
-			break;
-
-		case 'text':
-		case 'textarea':
-			if ( empty( $value ) ) {
-				if ( 'absint' == self::$value_check ) {
-					$value = 10;
-				} elseif ( 'ids' == self::$value_check ) {
-					$value = '3,1,2';
-				} elseif ( 'intval' == self::$value_check ) {
-					$value = 10;
-				} elseif ( 'min1' == self::$value_check ) {
-					$value = 5;
-				} elseif ( 'nozero' == self::$value_check ) {
-					$value = 10;
-				} elseif ( 'slug' == self::$value_check ) {
-					$value = 'slug-name';
-				} elseif ( 'term' == self::$value_check ) {
-					$value = 'termname';
-				} elseif ( 'terms' == self::$value_check ) {
-					if ( preg_match( '#category|categories#i', $setting ) ) {
-						$value = esc_html__( 'Category A, Another category, 123' );
-					} else {
-						$value = esc_html__( 'Tag A, Another tag, 123' );
-					}
-				} else {
-					$value = esc_html__( 'You decide…' );
+			case 'checkbox':
+				if ( Aihrus_Settings::is_false( $value ) ) {
+					$value = 'false';
+				} elseif ( Aihrus_Settings::is_true( $value ) ) {
+					$value = 'true';
+				} elseif ( empty( $value ) ) {
+					$value = esc_html__( 'TBD empty ' ) . $parts['type'];
 				}
-			}
-			break;
+				break;
 
-		default:
-			break;
+			case 'select':
+				if ( empty( $value ) ) {
+					$value = esc_html__( 'Pick an option' );
+				}
+				break;
+
+			case 'text':
+			case 'textarea':
+				if ( empty( $value ) ) {
+					if ( 'absint' == self::$value_check ) {
+						$value = 10;
+					} elseif ( 'ids' == self::$value_check ) {
+						$value = '3,1,2';
+					} elseif ( 'intval' == self::$value_check ) {
+						$value = 10;
+					} elseif ( 'min1' == self::$value_check ) {
+						$value = 5;
+					} elseif ( 'nozero' == self::$value_check ) {
+						$value = 10;
+					} elseif ( 'slug' == self::$value_check ) {
+						$value = 'slug-name';
+					} elseif ( 'term' == self::$value_check ) {
+						$value = 'termname';
+					} elseif ( 'terms' == self::$value_check ) {
+						if ( preg_match( '#category|categories#i', $setting ) ) {
+							$value = esc_html__( 'Category A, Another category, 123' );
+						} else {
+							$value = esc_html__( 'Tag A, Another tag, 123' );
+						}
+					} else {
+						$value = esc_html__( 'You decide…' );
+					}
+				}
+				break;
+
+			default:
+				break;
 		}
 
 		self::$value_check = null;
