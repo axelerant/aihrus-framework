@@ -2,9 +2,8 @@
 
 ## master
 
-## 1.1.6RC2
+## 1.1.6RC1
 * Denote included libraries
-* RELATES #6 Replace metabox and options handling with CMB2
 
 ## 1.1.5
 * Abstract do_validate_settings for easier reuse
