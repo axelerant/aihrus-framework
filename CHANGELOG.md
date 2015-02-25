@@ -2,6 +2,9 @@
 
 ## master
 
+## 1.2.0
+* Update branding from Aihrus to Axelerant
+
 ## 1.1.7
 * RESOLVE michael-cannon/testimonials-widget#156 License not saving
 * Update copyright year

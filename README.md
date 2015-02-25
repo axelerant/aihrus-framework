@@ -1,6 +1,6 @@
 # Aihrus Framework
 
-A helper library for WordPress plugins by Aihrus.
+A helper library for WordPress plugins by Aihrus and maintained by [Axelerant](//axelerant.com).
 
 ## Features
 
