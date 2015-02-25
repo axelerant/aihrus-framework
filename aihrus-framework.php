@@ -86,7 +86,7 @@ if ( ! function_exists( 'aihr_notice_aihrus_framework' ) ) {
 			$name = ucwords( $name );
 		}
 
-		$help_url  = esc_url( 'https://aihrus.zendesk.com/entries/35689458' );
+		$help_url  = esc_url( 'https://nodedesk.zendesk.com/hc/en-us/articles/202381391' );
 		$help_link = sprintf( __( '<a href="%1$s">Update plugins</a>. <a href="%2$s">More information</a>.' ), self_admin_url( 'update-core.php' ), $help_url );
 
 		$note = '';
@@ -149,7 +149,7 @@ if ( ! function_exists( 'aihr_notice_php' ) ) {
 			$name = ucwords( $name );
 		}
 
-		$help_url = esc_url( 'https://aihrus.zendesk.com/entries/30678006' );
+		$help_url = esc_url( 'https://nodedesk.zendesk.com/hc/en-us/articles/202331041' );
 
 		$text = sprintf( __( 'Plugin "%1$s" has been deactivated as it requires PHP %2$s or newer. You\'re running PHP %4$s. Once corrected, "%1$s" can be activated. <a href="%3$s">More information</a>.' ), $name, AIHR_PHP_VERSION_MIN, $help_url, PHP_VERSION );
 
@@ -265,7 +265,7 @@ if ( ! function_exists( 'aihr_notice_license' ) ) {
 
 		$settings_link = sprintf( $text, $link, $free_name );
 
-		$link = esc_url( 'https://aihrus.zendesk.com/entries/28745227' );
+		$link = esc_url( 'https://nodedesk.zendesk.com/hc/en-us/articles/202333071' );
 		$text = __( '<a href="%s">Where\'s my license key?</a>' );
 
 		$faq_link = sprintf( $text, $link );
