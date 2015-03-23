@@ -25,7 +25,7 @@ abstract class Aihrus_Common {
 	public static $donate_button;
 	public static $donate_link;
 	public static $markdown_helper;
-	public static $scripts_called;
+	public static $scripts_called = false;
 	public static $value_check;
 
 
