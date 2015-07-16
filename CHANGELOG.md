@@ -2,6 +2,9 @@
 
 ## master
 
+## 1.2.3RC1
+* Update Parsedown library
+
 ## 1.2.2
 * Add Inside Axelerant link
 * Store branding updates
