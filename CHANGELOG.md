@@ -3,6 +3,7 @@
 ## master
 
 ## 1.2.3RC1
+* RESOLVE michael-cannon/testimonials-widget#184 Remove deprecated constructor calls for WP_Widget
 * Update Parsedown library
 
 ## 1.2.2
