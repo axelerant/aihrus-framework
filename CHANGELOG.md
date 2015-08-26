@@ -4,6 +4,7 @@
 
 ## 1.2.3RC1
 * RELATES #7 Add option to disable the license not saved notice
+* RESOLVE #8 Remove activation helpers
 * RESOLVE michael-cannon/testimonials-widget#184 Remove deprecated constructor calls for WP_Widget
 * Update Parsedown 1.5.4 library
 
