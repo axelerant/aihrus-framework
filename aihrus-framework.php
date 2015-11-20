@@ -240,11 +240,7 @@ if ( ! function_exists( 'aihr_notice_version' ) ) {
 }
 
 if ( ! function_exists( 'aihr_notice_license' ) ) {
-	function aihr_notice_license( $post_type, $settings_id, $free_name, $purchase_url, $item_name, $product_id = null, $license = null, $disable_license_notice  = null) {
-		if ( $disable_license_notice ) {
-			return;
-		}
-
+	function aihr_notice_license( $post_type, $settings_id, $free_name, $purchase_url, $item_name, $product_id = null, $license = null ) {
 		if ( empty( $post_type ) ) {
 			$link = get_admin_url() . 'options-general.php?page=' . $settings_id;
 		} else {
