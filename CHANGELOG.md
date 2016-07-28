@@ -2,6 +2,9 @@
 
 ## master
 
+## 1.2.5RC1
+* Use WP provided nonce functions
+
 ## 1.2.4
 * Change support email address to `support@axelerant.com`
 * Fix coding standards for CI

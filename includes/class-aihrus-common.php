@@ -210,9 +210,9 @@ EOD;
 		$check  = $uid . $action;
 		$valid  = false;
 
- 		$active = wp_verify_nonce( $nonce, $check );
+		$active = wp_verify_nonce( $nonce, $check );
 
-		if ( $active != false ) {
+		if ( false != $active ) {
 			$valid = true;
 		}
 
@@ -457,7 +457,7 @@ EOD;
 					if ( end( $tag_stack ) == $tag_inner ) {
 						array_pop( $tag_stack );
 					}
-				} elseif ( $tag[ $func_strlen( $tag ) - 2 ] == '/' || in_array( strtolower( $tag_inner ), $unpaired_tags ) ) {
+				} elseif ( '/' == $tag[ $func_strlen( $tag ) - 2 ] || in_array( strtolower( $tag_inner ), $unpaired_tags ) ) {
 					// Self-closing or unpaired tag
 					$output .= $tag;
 				} else {
