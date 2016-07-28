@@ -196,23 +196,23 @@ EOD;
 
 
 	public static function create_nonce( $action ) {
-		$nonce = uniqid();
 		$uid   = get_current_user_id();
 		$check = $uid . $action;
-		set_transient( $nonce, $check, HOUR_IN_SECONDS );
+
+		$nonce = wp_create_nonce( $check );
 
 		return $nonce;
 	}
 
 
 	public static function verify_nonce( $nonce, $action ) {
-		$active = get_transient( $nonce );
 		$uid    = get_current_user_id();
 		$check  = $uid . $action;
 		$valid  = false;
 
-		if ( $active == $check ) {
-			delete_transient( $nonce );
+ 		$active = wp_verify_nonce( $nonce, $check );
+
+		if ( $active != false ) {
 			$valid = true;
 		}
 
