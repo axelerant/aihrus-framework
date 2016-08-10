@@ -2,7 +2,7 @@
 
 ## master
 
-## 1.2.5RC1
+## 1.2.5
 * Use WP provided nonce functions
 
 ## 1.2.4
