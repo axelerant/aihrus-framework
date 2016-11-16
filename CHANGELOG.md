@@ -2,6 +2,9 @@
 
 ## master
 
+## 1.2.6RC1
+* Update Parsedown 1.6.1
+
 ## 1.2.5
 * Use WP provided nonce functions
 
