@@ -2,7 +2,7 @@
 
 ## master
 
-## 1.2.6RC1
+## 1.2.6
 * Update Parsedown 1.6.1
 
 ## 1.2.5
