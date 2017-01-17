@@ -2,6 +2,9 @@
 
 ## master
 
+## 1.2.7RC1
+* Update FAQ's link
+
 ## 1.2.6
 * Update Parsedown 1.6.1
 
@@ -9,7 +12,7 @@
 * Use WP provided nonce functions
 
 ## 1.2.4
-* Change support email address to `support@axelerant.com`
+* Change support email address to `support@axelerant.atlassian.net`
 * Fix coding standards for CI
 * Remove option to disable the license not saved notice rather set sslverify to false
 * Remove the use of deprecated function `wp_htmledit_pre()` and use `format_for_editor()` instead
