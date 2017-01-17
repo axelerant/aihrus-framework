@@ -2,8 +2,8 @@
 
 ## master
 
-## 1.2.7RC1
-*  Change support email address to `support@axelerant.atlassian.net`
+## 1.2.7
+* Change support email address to `support@axelerant.atlassian.net`
 * Update FAQ's link
 
 ## 1.2.6
