@@ -3,7 +3,7 @@
 ## master
 
 ## 1.2.8RC1
-* Change support email address to `wp_support@axelerant.atlassian.net`
+* Change support email address to `support@axelerant.com`
 * Modify class name to display error message for license missing
 
 ## 1.2.7
