@@ -2,7 +2,7 @@
 
 ## master
 
-## 1.2.8RC1
+## 1.2.8
 * Change support email address to `support@axelerant.com`
 * Modify class name to display error message for license missing
 
