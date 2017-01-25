@@ -2,7 +2,7 @@
 
 ## master
 
-## 1.2.9RC1
+## 1.2.9
 * Added target url to blank to open links in seperate tab
 
 ## 1.2.8
