@@ -2,6 +2,12 @@
 
 ## master
 
+## 1.3.0RC1
+* Tested with WordPress 4.8.1
+* Update branding from Aihrus Framework to Axelerant Axelerant
+* Update donate page link
+
+
 ## 1.2.9
 * Added target url to blank to open links in seperate tab
 
