@@ -2,7 +2,7 @@
 
 ## master
 
-## 1.3.0RC1
+## 1.3.0
 * Tested with WordPress 4.8.1
 * Update branding from Aihrus Framework to Axelerant Axelerant
 * Update donate page link
