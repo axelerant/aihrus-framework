@@ -2,6 +2,9 @@
 
 ## master
 
+# 1.3.5
+* Fix XSS vulnerability issue
+
 # 1.3.4
 * Fix PHP 7.3 compatibility issue for preg_match compilation
 
